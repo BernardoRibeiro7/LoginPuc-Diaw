@@ -70,7 +70,30 @@ public class AuthController {
     }
 
     @GetMapping("/recoverpassword")
-    public String recoverPassword() {
+public String recoverPasswordPage() {
+    return "recoverpassword";
+}
+
+@PostMapping("/recoverpassword")
+public String recoverPassword(
+        @org.springframework.web.bind.annotation.RequestParam String email,
+        Model model) {
+
+    if (email == null || email.isBlank()) {
+        model.addAttribute("error", "Informe seu email.");
         return "recoverpassword";
     }
+
+    if (!userService.emailExists(email)) {
+        model.addAttribute("error", "Email não encontrado.");
+        return "recoverpassword";
+    }
+
+    model.addAttribute(
+        "success",
+        "Solicitação de recuperação registrada para este email."
+    );
+
+    return "recoverpassword";
+}
 }
