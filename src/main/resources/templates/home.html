@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+
+    <h1>Área protegida</h1>
+
+    <p>
+        Bem-vindo,
+        <strong th:text="${username}"></strong>!
+    </p>
+
+    <p>
+        Você realizou login com sucesso.
+    </p>
+
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Sair</button>
+    </form>
+
+</body>
+</html>

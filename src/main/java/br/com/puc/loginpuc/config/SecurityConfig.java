@@ -12,13 +12,30 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/register", "/register/**", "/css/**", "/images/**").permitAll()
+                .requestMatchers(
+                    "/login",
+                    "/register",
+                    "/recoverpassword",
+                    "/css/**",
+                    "/images/**"
+                ).permitAll()
                 .anyRequest().authenticated()
             )
-            .formLogin(form -> form.permitAll())
-            .logout(logout -> logout.permitAll());
+
+            .formLogin(form -> form
+                .loginPage("/login")
+                .defaultSuccessUrl("/home", true)
+                .failureUrl("/login?error")
+                .permitAll()
+            )
+
+            .logout(logout -> logout
+                .logoutSuccessUrl("/login?logout")
+                .permitAll()
+            );
 
         return http.build();
     }

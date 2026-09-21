@@ -20,6 +20,11 @@ public class AuthController {
         this.userService = userService;
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping("/register")
     public String registerPage(Model model) {
         model.addAttribute("registerForm", new RegisterForm());
@@ -61,6 +66,11 @@ public class AuthController {
 
         userService.register(form);
 
-        return "redirect:/login";
+        return "redirect:/login?registered";
+    }
+
+    @GetMapping("/recoverpassword")
+    public String recoverPassword() {
+        return "recoverpassword";
     }
 }
