@@ -1,50 +1,131 @@
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Cadastro | Nexus</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
 
-    <h1>Criar conta</h1>
+<div class="page">
 
-    <form th:action="@{/register}" th:object="${registerForm}" method="post">
+    <section class="brand-side">
 
-        <div>
-            <label>Usuário</label>
-            <input type="text" th:field="*{username}">
-            <span th:if="${#fields.hasErrors('username')}"
-                  th:errors="*{username}"></span>
+        <div class="logo">
+            <div class="logo-mark"></div>
+            NEXUS
         </div>
 
-        <div>
-            <label>Email</label>
-            <input type="email" th:field="*{email}">
-            <span th:if="${#fields.hasErrors('email')}"
-                  th:errors="*{email}"></span>
+        <div class="brand-content">
+            <h2>Comece uma<br>nova experiência.</h2>
+
+            <p>
+                Crie sua conta em poucos segundos e tenha acesso
+                seguro à plataforma.
+            </p>
         </div>
 
-        <div>
-            <label>Senha</label>
-            <input type="password" th:field="*{password}">
-            <span th:if="${#fields.hasErrors('password')}"
-                  th:errors="*{password}"></span>
+        <div class="brand-footer">
+            Seus dados protegidos desde o primeiro acesso.
         </div>
 
-        <div>
-            <label>Confirmar senha</label>
-            <input type="password" th:field="*{confirmPassword}">
-            <span th:if="${#fields.hasErrors('confirmPassword')}"
-                  th:errors="*{confirmPassword}"></span>
+    </section>
+
+    <section class="form-side">
+
+        <div class="form-container">
+
+            <h1>Criar conta</h1>
+            <p class="subtitle">
+                Preencha seus dados para realizar o cadastro.
+            </p>
+
+            <form
+                th:action="@{/register}"
+                th:object="${registerForm}"
+                method="post">
+
+                <div class="form-group">
+                    <label>Usuário</label>
+
+                    <input
+                        type="text"
+                        th:field="*{username}"
+                        placeholder="Escolha seu usuário">
+
+                    <span
+                        class="field-error"
+                        th:if="${#fields.hasErrors('username')}"
+                        th:errors="*{username}">
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        th:field="*{email}"
+                        placeholder="seuemail@exemplo.com">
+
+                    <span
+                        class="field-error"
+                        th:if="${#fields.hasErrors('email')}"
+                        th:errors="*{email}">
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label>Senha</label>
+
+                    <input
+                        type="password"
+                        th:field="*{password}"
+                        placeholder="Mínimo de 6 caracteres">
+
+                    <span
+                        class="field-error"
+                        th:if="${#fields.hasErrors('password')}"
+                        th:errors="*{password}">
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label>Confirmar senha</label>
+
+                    <input
+                        type="password"
+                        th:field="*{confirmPassword}"
+                        placeholder="Digite novamente sua senha">
+
+                    <span
+                        class="field-error"
+                        th:if="${#fields.hasErrors('confirmPassword')}"
+                        th:errors="*{confirmPassword}">
+                    </span>
+                </div>
+
+                <button class="btn" type="submit">
+                    Criar minha conta
+                </button>
+
+            </form>
+
+            <div class="links">
+                Já possui uma conta?
+                <a th:href="@{/login}">
+                    Entrar
+                </a>
+            </div>
+
         </div>
 
-        <button type="submit">Cadastrar</button>
+    </section>
 
-    </form>
-
-    <a th:href="@{/login}">Voltar para o login</a>
+</div>
 
 </body>
 </html>

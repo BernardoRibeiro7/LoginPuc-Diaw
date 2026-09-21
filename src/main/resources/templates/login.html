@@ -4,56 +4,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login | Nexus</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
 
-    <h1>Entrar</h1>
+<div class="page">
 
-    <p th:if="${param.error}">
-        Usuário, email ou senha inválidos.
-    </p>
-
-    <p th:if="${param.logout}">
-        Sessão encerrada com sucesso.
-    </p>
-
-    <p th:if="${param.registered}">
-        Cadastro realizado com sucesso. Faça seu login.
-    </p>
-
-    <form th:action="@{/login}" method="post">
-
-        <div>
-            <label>Usuário ou email</label>
-            <input
-                type="text"
-                name="username"
-                required>
+    <section class="brand-side">
+        <div class="logo">
+            <div class="logo-mark"></div>
+            NEXUS
         </div>
 
-        <div>
-            <label>Senha</label>
-            <input
-                type="password"
-                name="password"
-                required>
+        <div class="brand-content">
+            <h2>Seu acesso.<br>Mais simples.</h2>
+            <p>
+                Uma experiência segura e moderna para acessar sua conta
+                e manter seus dados protegidos.
+            </p>
         </div>
 
-        <button type="submit">Entrar</button>
+        <div class="brand-footer">
+            Sistema de autenticação • Spring Boot + Thymeleaf
+        </div>
+    </section>
 
-    </form>
+    <section class="form-side">
 
-    <a th:href="@{/register}">
-        Criar conta
-    </a>
+        <div class="form-container">
 
-    <br>
+            <h1>Bem-vindo</h1>
+            <p class="subtitle">Entre com suas credenciais para continuar.</p>
 
-    <a th:href="@{/recoverpassword}">
-        Esqueci minha senha
-    </a>
+            <div class="message error" th:if="${param.error}">
+                Usuário, email ou senha inválidos.
+            </div>
+
+            <div class="message success" th:if="${param.logout}">
+                Sessão encerrada com sucesso.
+            </div>
+
+            <div class="message success" th:if="${param.registered}">
+                Cadastro realizado. Agora você já pode entrar.
+            </div>
+
+            <form th:action="@{/login}" method="post">
+
+                <div class="form-group">
+                    <label>Usuário ou email</label>
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Digite seu usuário ou email"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Digite sua senha"
+                        required>
+                </div>
+
+                <button class="btn" type="submit">
+                    Entrar
+                </button>
+
+            </form>
+
+            <div class="links">
+                <a th:href="@{/recoverpassword}">
+                    Esqueci minha senha
+                </a>
+
+                <br>
+
+                Ainda não possui conta?
+                <a th:href="@{/register}">
+                    Criar conta
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
 
 </body>
 </html>
