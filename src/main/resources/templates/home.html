@@ -4,25 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Início | Lumen</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
 
-    <h1>Área protegida</h1>
+<main class="home-page">
 
-    <p>
-        Bem-vindo,
-        <strong th:text="${username}"></strong>!
-    </p>
+    <nav class="home-nav">
 
-    <p>
-        Você realizou login com sucesso.
-    </p>
+        <div class="logo">
+            <div class="logo-symbol"></div>
+            LUMEN
+        </div>
 
-    <form th:action="@{/logout}" method="post">
-        <button type="submit">Sair</button>
-    </form>
+        <form th:action="@{/logout}" method="post">
+            <button class="logout-button" type="submit">
+                Sair
+            </button>
+        </form>
+
+    </nav>
+
+    <section class="home-content">
+
+        <article class="welcome-card">
+
+            <div class="grid"></div>
+            <div class="shape-one"></div>
+
+            <span>Autenticação concluída</span>
+
+            <h1>
+                Bem-vindo,<br>
+                <strong th:text="${username}"></strong>.
+            </h1>
+
+            <p>
+                Você está em uma área protegida da aplicação.
+                Somente usuários autenticados conseguem acessar esta página.
+            </p>
+
+        </article>
+
+        <aside class="info-card">
+
+            <div class="info-number">01</div>
+
+            <h3>Sessão segura</h3>
+
+            <p>
+                Sua sessão está sendo gerenciada pelo Spring Security.
+                Ao encerrar a sessão, será necessário realizar uma nova
+                autenticação para acessar esta área.
+            </p>
+
+        </aside>
+
+    </section>
+
+</main>
 
 </body>
-</html>
+</html> 

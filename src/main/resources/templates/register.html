@@ -4,57 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro | Nexus</title>
+    <title>Criar conta | Lumen</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
 
-<div class="page">
+<main class="auth-page">
 
-    <section class="brand-side">
+    <section class="visual">
+
+        <div class="grid"></div>
+        <div class="shape-one"></div>
+        <div class="shape-two"></div>
 
         <div class="logo">
-            <div class="logo-mark"></div>
-            NEXUS
+            <div class="logo-symbol"></div>
+            LUMEN
         </div>
 
-        <div class="brand-content">
-            <h2>Comece uma<br>nova experiência.</h2>
+        <div class="visual-copy">
+
+            <div class="eyebrow">Novo usuário</div>
+
+            <h2>
+                Sua conta.<br>
+                Seu espaço.
+            </h2>
 
             <p>
-                Crie sua conta em poucos segundos e tenha acesso
-                seguro à plataforma.
+                Cadastre seus dados e tenha acesso à plataforma
+                de maneira segura.
             </p>
+
         </div>
 
-        <div class="brand-footer">
-            Seus dados protegidos desde o primeiro acesso.
+        <div class="visual-footer">
+            Simples por fora. Seguro por dentro.
         </div>
 
     </section>
 
-    <section class="form-side">
+    <section class="form-area">
 
-        <div class="form-container">
+        <div class="form-box">
 
-            <h1>Criar conta</h1>
-            <p class="subtitle">
-                Preencha seus dados para realizar o cadastro.
-            </p>
+            <div class="form-top">
+                <span class="tag">Cadastro</span>
+                <h1>Crie sua conta.</h1>
+                <p>Leva menos de um minuto.</p>
+            </div>
 
             <form
                 th:action="@{/register}"
                 th:object="${registerForm}"
                 method="post">
 
-                <div class="form-group">
-                    <label>Usuário</label>
+                <div class="field">
+                    <label>Nome de usuário</label>
 
                     <input
                         type="text"
                         th:field="*{username}"
-                        placeholder="Escolha seu usuário">
+                        placeholder="Escolha um usuário">
 
                     <span
                         class="field-error"
@@ -63,13 +75,13 @@
                     </span>
                 </div>
 
-                <div class="form-group">
+                <div class="field">
                     <label>Email</label>
 
                     <input
                         type="email"
                         th:field="*{email}"
-                        placeholder="seuemail@exemplo.com">
+                        placeholder="exemplo@email.com">
 
                     <span
                         class="field-error"
@@ -78,13 +90,13 @@
                     </span>
                 </div>
 
-                <div class="form-group">
+                <div class="field">
                     <label>Senha</label>
 
                     <input
                         type="password"
                         th:field="*{password}"
-                        placeholder="Mínimo de 6 caracteres">
+                        placeholder="Pelo menos 6 caracteres">
 
                     <span
                         class="field-error"
@@ -93,13 +105,13 @@
                     </span>
                 </div>
 
-                <div class="form-group">
+                <div class="field">
                     <label>Confirmar senha</label>
 
                     <input
                         type="password"
                         th:field="*{confirmPassword}"
-                        placeholder="Digite novamente sua senha">
+                        placeholder="Repita sua senha">
 
                     <span
                         class="field-error"
@@ -108,16 +120,16 @@
                     </span>
                 </div>
 
-                <button class="btn" type="submit">
-                    Criar minha conta
+                <button class="primary-button" type="submit">
+                    Criar conta
                 </button>
 
             </form>
 
-            <div class="links">
+            <div class="secondary-links">
                 Já possui uma conta?
                 <a th:href="@{/login}">
-                    Entrar
+                    Fazer login
                 </a>
             </div>
 
@@ -125,7 +137,7 @@
 
     </section>
 
-</div>
+</main>
 
 </body>
 </html>

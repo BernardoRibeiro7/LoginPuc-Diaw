@@ -4,96 +4,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Nexus</title>
+    <title>Entrar | Lumen</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
 
-<div class="page">
+<main class="auth-page">
 
-    <section class="brand-side">
+    <section class="visual">
+
+        <div class="grid"></div>
+        <div class="shape-one"></div>
+        <div class="shape-two"></div>
+
         <div class="logo">
-            <div class="logo-mark"></div>
-            NEXUS
+            <div class="logo-symbol"></div>
+            LUMEN
         </div>
 
-        <div class="brand-content">
-            <h2>Seu acesso.<br>Mais simples.</h2>
+        <div class="visual-copy">
+            <div class="eyebrow">Acesso inteligente</div>
+
+            <h2>
+                Entre.<br>
+                Continue.<br>
+                Simples assim.
+            </h2>
+
             <p>
-                Uma experiência segura e moderna para acessar sua conta
-                e manter seus dados protegidos.
+                Uma plataforma criada para tornar sua autenticação
+                simples, rápida e segura.
             </p>
         </div>
 
-        <div class="brand-footer">
-            Sistema de autenticação • Spring Boot + Thymeleaf
+        <div class="visual-footer">
+            Spring Boot · Thymeleaf · Spring Security
         </div>
+
     </section>
 
-    <section class="form-side">
+    <section class="form-area">
 
-        <div class="form-container">
+        <div class="form-box">
 
-            <h1>Bem-vindo</h1>
-            <p class="subtitle">Entre com suas credenciais para continuar.</p>
+            <div class="form-top">
+                <span class="tag">Área de acesso</span>
+                <h1>Olá novamente.</h1>
+                <p>Use seu usuário ou email para acessar sua conta.</p>
+            </div>
 
             <div class="message error" th:if="${param.error}">
-                Usuário, email ou senha inválidos.
+                Usuário, email ou senha incorretos.
             </div>
 
             <div class="message success" th:if="${param.logout}">
-                Sessão encerrada com sucesso.
+                Você saiu da sua conta com sucesso.
             </div>
 
             <div class="message success" th:if="${param.registered}">
-                Cadastro realizado. Agora você já pode entrar.
+                Conta criada com sucesso. Faça seu login.
             </div>
 
             <form th:action="@{/login}" method="post">
 
-                <div class="form-group">
+                <div class="field">
                     <label>Usuário ou email</label>
                     <input
-                        type="text"
                         name="username"
-                        placeholder="Digite seu usuário ou email"
+                        type="text"
+                        placeholder="exemplo@email.com"
                         required>
                 </div>
 
-                <div class="form-group">
+                <div class="field">
                     <label>Senha</label>
                     <input
-                        type="password"
                         name="password"
-                        placeholder="Digite sua senha"
+                        type="password"
+                        placeholder="Sua senha"
                         required>
                 </div>
 
-                <button class="btn" type="submit">
-                    Entrar
+                <button class="primary-button" type="submit">
+                    Acessar minha conta
                 </button>
 
             </form>
 
-            <div class="links">
+            <div class="secondary-links">
+
                 <a th:href="@{/recoverpassword}">
                     Esqueci minha senha
                 </a>
 
                 <br>
 
-                Ainda não possui conta?
+                Novo por aqui?
                 <a th:href="@{/register}">
-                    Criar conta
+                    Criar uma conta
                 </a>
+
             </div>
 
         </div>
 
     </section>
 
-</div>
+</main>
 
 </body>
 </html>
